@@ -337,12 +337,14 @@ onload = function()
 
       // 根元の座標系
       gl.bindBuffer(gl.UNIFORM_BUFFER, aUBO[1]);
-      gl.bufferData(gl.UNIFORM_BUFFER, a_wMatrix[0], gl.DYNAMIC_DRAW);
+      gl.bufferData(gl.UNIFORM_BUFFER, a_lMatrix[0], gl.DYNAMIC_DRAW);
       gl.bindBuffer(gl.UNIFORM_BUFFER, null);
       gl.drawElements(gl.LINES, 6, gl.UNSIGNED_SHORT, 0);
       // 次の座標系
+      var m = mat.create();
+      mat.multiply(a_wMatrix[0], a_lMatrix[1], m );
       gl.bindBuffer(gl.UNIFORM_BUFFER, aUBO[1]);
-      gl.bufferData(gl.UNIFORM_BUFFER, a_wMatrix[1], gl.DYNAMIC_DRAW);
+      gl.bufferData(gl.UNIFORM_BUFFER, m, gl.DYNAMIC_DRAW);
       gl.bindBuffer(gl.UNIFORM_BUFFER, null);
       gl.drawElements(gl.LINES, 6, gl.UNSIGNED_SHORT, 0);
     }
@@ -352,10 +354,12 @@ onload = function()
     {
       const vertexBuffer = gl.createBuffer();
       const colorBuffer = gl.createBuffer();
+      var m = mat.create();
+      mat.multiply(a_wMatrix[0], a_lMatrix[1], m );
       gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
-        a_wMatrix[0][12], a_wMatrix[0][13], a_wMatrix[0][14],
-        a_wMatrix[1][12], a_wMatrix[1][13], a_wMatrix[1][14],
+        a_lMatrix[0][12], a_lMatrix[0][13], a_lMatrix[0][14],
+        m[12], m[13], m[14],
       ]), gl.STATIC_DRAW);
       gl.vertexAttribPointer(aAttribLoc[0], 3, gl.FLOAT, false, 0, 0);
       gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
