@@ -342,7 +342,7 @@ onload = function()
       gl.drawElements(gl.LINES, 6, gl.UNSIGNED_SHORT, 0);
       // 次の座標系
       var m = mat.create();
-      mat.multiply(a_wMatrix[0], a_lMatrix[1], m );
+      mat.multiply(a_lMatrix[0], a_lMatrix[1], m );
       gl.bindBuffer(gl.UNIFORM_BUFFER, aUBO[1]);
       gl.bufferData(gl.UNIFORM_BUFFER, m, gl.DYNAMIC_DRAW);
       gl.bindBuffer(gl.UNIFORM_BUFFER, null);
@@ -355,7 +355,7 @@ onload = function()
       const vertexBuffer = gl.createBuffer();
       const colorBuffer = gl.createBuffer();
       var m = mat.create();
-      mat.multiply(a_wMatrix[0], a_lMatrix[1], m );
+      mat.multiply(a_lMatrix[0], a_lMatrix[1], m );
       gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
         a_lMatrix[0][12], a_lMatrix[0][13], a_lMatrix[0][14],
