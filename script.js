@@ -277,7 +277,7 @@ onload = function()
       else if(bend < 0.50) {angle = (0.5 - bend) * 2.0 * Math.PI;}
       mat.rotate(a_bMatrix[1], angle, [1.0, 0.0, 0.0], a_lMatrix[1]);// src angle axis dest
 
-      // モデルのワールド行列の生成
+      // モデルのワールド行列の生成【ここをなんとかする】
       a_wMatrix[0] = a_lMatrix[0];
       a_wMatrix[1] = a_wMatrix[0];
 	    
