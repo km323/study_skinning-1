@@ -278,13 +278,13 @@ onload = function()
       mat.rotate(a_bMatrix[1], angle, [1.0, 0.0, 0.0], a_lMatrix[1]);// src angle axis dest
 
       // モデルのワールド行列の生成
-      a_wMatrix[0] = a_lMatrix[0];
-      mat.multiply(a_wMatrix[0], a_lMatrix[1], a_wMatrix[1] );
-
+      // todo...
+      // todo...
+	    
       // モデル描画
       gl.useProgram(prg_skin);
 
-      // 描画用行列の設定【この行列の設定をどうにかする】
+      // 描画用行列の設定
       gl.bindBuffer(gl.UNIFORM_BUFFER, aUBO[2]);
       gl.bufferData(gl.UNIFORM_BUFFER, new Float32Array([
 	// 関節 0
