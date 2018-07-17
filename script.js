@@ -282,7 +282,7 @@ onload = function()
       a_wMatrix[1] = a_wMatrix[0];
 	    
 	    var a1Mat=[];
-	    mat.multiply(a_wMatrix[1],a_bMatrixInverse,a1Mat);
+	    mat.multiply(a_wMatrix[1],a_bMatrixInverse[1],a1Mat);
 	    
       // モデル描画
       gl.useProgram(prg_skin);
