@@ -281,6 +281,9 @@ onload = function()
       a_wMatrix[0] = a_lMatrix[0];
       a_wMatrix[1] = a_wMatrix[0];
 	    
+	    var a1Mat=[];
+	    mat.multiply(a_wMatrix[1],a_bMatrixInverse,a1Mat);
+	    
       // モデル描画
       gl.useProgram(prg_skin);
 
@@ -293,10 +296,10 @@ onload = function()
         a_wMatrix[0][8], a_wMatrix[0][9], a_wMatrix[0][10], a_wMatrix[0][11],
         a_wMatrix[0][12], a_wMatrix[0][13], a_wMatrix[0][14], a_wMatrix[0][15],
 	// 関節 1
-        a_wMatrix[1][0], a_wMatrix[1][1], a_wMatrix[1][2], a_wMatrix[1][3],
-        a_wMatrix[1][4], a_wMatrix[1][5], a_wMatrix[1][6], a_wMatrix[1][7],
-        a_wMatrix[1][8], a_wMatrix[1][9], a_wMatrix[1][10], a_wMatrix[1][11],
-        a_wMatrix[1][12], a_wMatrix[1][13], a_wMatrix[1][14], a_wMatrix[1][15],
+        a1Mat[0], a1Mat[1], a1Mat[2], a1Mat[3],
+        a1Mat[4], a1Mat[5], a1Mat[6], a1Mat[7],
+        a1Mat[8], a1Mat[9], a1Mat[10], a1Mat[11],
+        a1Mat[12], a1Mat[13], a1Mat[14], a1Mat[15],
       ]), gl.DYNAMIC_DRAW);
       gl.bindBuffer(gl.UNIFORM_BUFFER, null);
 
