@@ -279,7 +279,7 @@ onload = function()
 
       // モデルのワールド行列の生成【ここをなんとかする】
       a_wMatrix[0] = a_lMatrix[0];
-      a_wMatrix[1] = a_wMatrix[0];
+      mat.multiply(a_wMatrix[0], a_lMatrix[1], a_wMatrix[1]);
 	    
 	    var a1Mat=[];
 	    mat.multiply(a_wMatrix[1],a_bMatrixInverse[1],a1Mat);
